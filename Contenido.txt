@@ -179,3 +179,9 @@ lo mismo debe venir con pip freeze
 a su vez es 
 
 pip freeze > requirements.txt
+
+
+Tambien debemos al fondo del settings agregarle una propiedad apra que acepte nuestro host
+
+ALLOWED_HOSTS=['web-production-3c80b.up.railway.app','localhost']
+
