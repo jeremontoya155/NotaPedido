@@ -173,3 +173,9 @@ Procfile debe tener  los valores de gunicorn
 
 web:gunicorn django_project.wsgi
 
+y debemos crear un requirementes.txt
+lo mismo debe venir con pip freeze
+
+a su vez es 
+
+pip freeze > requirements.txt

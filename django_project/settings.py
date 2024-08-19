@@ -125,6 +125,8 @@ STATICFILES_DIRS=[
 ]
 
 
+ALLOWED_HOSTS=['web-production-3c80b.up.railway.app','localhost']
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
