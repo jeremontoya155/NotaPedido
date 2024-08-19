@@ -1,0 +1,175 @@
+Desplegar el postgre rapido en railways
+
+
+1)Desplegar un entorno virtual 
+
+python -m venv venv
+
+
+para activar el entorno virtual 
+
+venv\Scripts\activate
+
+
+para cerrar el entorno virtual ponemos 
+
+"deactivate"
+
+
+-------------------------------
+
+Primero instalamos django en nuestro entorno virtual 
+
+pip install django 
+
+_Iniciar el repositorio 
+
+django_admin startproject NombreDeproyecto .
+
+Se crear el inicio basicco de todos los contenidos pero sin ningun proyecto principal corriendo 
+
+
+_Correr programa 
+
+python manage.py  runserver
+
+
+Cuando hacemos esto se crea una base sqlite de principio podemos usarla pero el ideal siempre es rota  a un postegree
+
+Luego creamos las aplicaicon desde
+_app
+
+django-admin starapp nombreAPp
+
+debemos una vez hecho esto cambiarla desde el settings.py
+
+vamos a ver esto
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+]
+
+y ahi le agregamos los nomvrede  las app que generasemos en este caso hicimos home y blog 
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+    'home',
+    
+]
+
+
+y al hacerlo tenemos que avisar a manage py usando el migrate
+
+el comando seria 
+
+
+python manage.py migarte
+-------------------------
+
+Una vez modificadas las vistas podemos entonces modificar los valores desde el views de cada proyecto 
+
+
+Vamos a elegir pro ejemplo blog y agragrles una carpeta template
+
+con la carpeta template actualizada tenemos lo siguiente 
+
+# Create your views here.
+def render_articles(request):
+    
+    return render(request,'article.html')
+
+    eso para agregar en el views.py
+
+Los valores de render son (request,"NombreSitio)
+
+el sitio simepre debe ir en la carpeta templates
+
+y en la misma carpeta cagreganmos un urls
+
+from django.urls import path
+from blog import views
+
+urlpatterns=[
+    path('',views.render_articles,name="articles")
+]
+
+Y luego en la carpeta de urls del proyecto se le hacen cambios para el inicio correcto 
+
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('articles/', include("blog.urls")),
+]
+
+
+---------------------------
+
+Para crear estaticos debemos hacer una medida que se llame static 
+
+
+primero en la hoja que vayamos a usar debemos de nutrirla con 
+
+{% load static %}
+
+y las rutas las cargamos desde {% static 'ruta' %}
+
+
+y en el settings del proyecto agregamos 
+
+
+hacemos import os
+
+
+STATICFILES_DIRS=[]
+
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'blog/static')
+]
+
+
+-----------------------------------
+
+Subida a produccion
+
+
+Si o si necesitamos
+
+-runtime.txt
+-gitignore
+-Procfile
+
+
+
+-gitignore deb contar con los siguiente datos
+venv
+__pycache__
+db.sqlite3
+
+
+
+runtime.txt
+https://nixpacks.com/docs/providers/python
+
+dejamos la version que mas este actualizada de  nixpacks
+
+
+Procfile debe tener  los valores de gunicorn
+
+web:gunicorn django_project.wsgi
+
