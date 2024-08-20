@@ -185,3 +185,51 @@ Tambien debemos al fondo del settings agregarle una propiedad apra que acepte nu
 
 ALLOWED_HOSTS=['web-production-3c80b.up.railway.app','localhost']
 
+y la posibilidad de que se nutra de archivos estaticos 
+
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
+y ahi le damo a:
+
+python manage.py collectstatic
+
+y agregamos en el Procfile
+
+&& gunicorn django_project.wsgi
+
+
+web: python manage.py collectstatic && gunicorn django_project.wsgi
+
+Y por ultimo instalar whitenoise
+
+
+pip install whitenoise
+
+
+y agregamos sus middlewares
+
+asi como tambien la INSTALLED_APPS
+
+
+INSTALLED_APPS va  a ser 
+
+"whitenoise.runserver_nostatic"
+
+
+y en el middlewares 
+
+"django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
+    y 
+
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+    siempre podemos ver eso en 
+
+    https://whitenoise.readthedocs.io/en/latest/
+
+    y volmeoes a correr el pip freeze
+------------------------
+
