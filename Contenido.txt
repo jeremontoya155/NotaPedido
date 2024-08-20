@@ -233,3 +233,7 @@ y en el middlewares
     y volmeoes a correr el pip freeze
 ------------------------
 
+Luego despues tenemosq que darle valores de CSRF TOKEN es decir los origentes confiables para que funcionen los from
+
+
+
