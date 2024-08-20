@@ -129,12 +129,18 @@ STATICFILES_DIRS=[
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-ALLOWED_HOSTS=['web-production-3c80b.up.railway.app','127.0.0.1:8000/','*']
+ALLOWED_HOSTS = ['web-production-3c80b.up.railway.app', '127.0.0.1']
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'https://web-production-3c80b.up.railway.app'
+]
 
-CSRF_TRUSTED_ORIGINS=['*']
+
+
