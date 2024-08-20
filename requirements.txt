@@ -1,7 +1,11 @@
 asgiref==3.8.1
+dj-database-url==2.2.0
 Django==5.1
 gunicorn==23.0.0
 packaging==24.1
+psycopg2==2.9.9
+python-dotenv @ git+https://github.com/theskumar/python-dotenv.git@4d505f2c9bc3569791e64bca0f2e4300f43df0e0
 sqlparse==0.5.1
+typing_extensions==4.12.2
 tzdata==2024.1
 whitenoise==6.7.0
