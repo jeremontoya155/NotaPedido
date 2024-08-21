@@ -255,5 +255,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
-pº
+----------------------------------------------
+
+Bien con esto ahora debe de andar nuestro valores 
+
+Para hacer una api framework podemos dejar lo siguiente 
+
+pip install djangorestframework
+
+
+Para poder arma contenido dentro de nuestros valores lo que vamos a realizar es la accion de generar un nuevo modelo dentro de mi app que hayamos tenido este object
+
+Para hacer una vista del contenido de manera directa necesitariamos que pueda  ahcer algo como lo siguiente 
+
+from django.shortcuts import render
+from rest_framework import viewset
+from .models import Task
+
+
+class TaskViewSet(viewset.ModelViewSet):
+    queryset=Task.objects.all()
+    serializer_class=TaskSerializer
+
+Nos faltaria unicamente crear el serializador que seria lo que nos permite convertir de la query al objeto real 
 
