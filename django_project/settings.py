@@ -106,15 +106,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # STATICFILES_DIRS should point to directories where your development static files are located
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),  # This should contain additional static files (not STATIC_ROOT)
+    os.path.join(BASE_DIR, 'static'),
 ]
+
 
 # STATIC_ROOT should be a separate directory where all static files will be collected for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
