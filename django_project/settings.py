@@ -15,7 +15,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-t=)_&#sxl1-@pbblj&z!52fgrj5g^&3@fc_nhu6%#+0kjf+p#8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['web-production-3c80b.up.railway.app', '127.0.0.1']
 
 # Application definition
